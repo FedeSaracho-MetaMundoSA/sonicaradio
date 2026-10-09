@@ -1,0 +1,36 @@
+{
+  "collections": [
+    {
+      "name": "users",
+      "description": "Stores user profiles for the chat.",
+      "documents": [
+        {
+          "id": "userId",
+          "fields": [
+            { "name": "nick", "type": "string" },
+            { "name": "avatar", "type": "string" },
+            { "name": "status", "type": "string" },
+            { "name": "role", "type": "string" },
+            { "name": "createdAt", "type": "timestamp" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "messages",
+      "description": "Stores chat messages.",
+      "documents": [
+        {
+          "id": "messageId",
+          "fields": [
+            { "name": "userId", "type": "string" },
+            { "name": "nick", "type": "string" },
+            { "name": "avatar", "type": "string" },
+            { "name": "text", "type": "string" },
+            { "name": "timestamp", "type": "timestamp" }
+          ]
+        }
+      ]
+    }
+  ]
+}

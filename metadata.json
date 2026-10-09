@@ -1,0 +1,6 @@
+{
+  "name": "Radio Sónica",
+  "description": "Sitio web oficial de Sónica Radio Online (sonicaradio.com.ar) con streaming en vivo 24/7, programación y chat interactivo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

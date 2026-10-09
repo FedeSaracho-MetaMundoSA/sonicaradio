@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-slow-zoom: slow-zoom 20s ease-in-out infinite alternate;
+  --animate-audio-bounce: audio-bounce 0.8s ease-in-out infinite;
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes slow-zoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+  }
+
+  @keyframes audio-bounce {
+    0%, 100% { transform: scaleY(0.2); }
+    50% { transform: scaleY(1); }
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
+@layer utilities {
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* ===== ANIMACIONES CONSOLA DJ - GLOBAL ===== */
+/* Las usás con className="animate-nombre" */
+
+/* Aura respirando (Ale Almada) */
+@keyframes aura-breathe {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.5; }
+  50%      { transform: translateX(-50%) scale(1.15); opacity: 0.8; }
+}
+.animate-aura-breathe { animation: aura-breathe 4s ease-in-out infinite; }
+
+/* Anillo expandiéndose (Botón Play hover) */
+@keyframes ring-expand {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+.animate-ring-expand { animation: ring-expand 1.5s ease-out infinite; }
+
+/* Pulso lento (Núcleo consola / Venas) */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 0.8; transform: translate(-50%, -50%) scale(1.2); }
+}
+.animate-pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
+
+/* Barra de progreso CÍCLICA 60s (Stream vivo) */
+/* La barra crece de 0 a 100% en 60s y reinicia */
+@keyframes progress-cyclic {
+  0%   { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+.animate-progress-cyclic {
+  animation: progress-cyclic 60s linear infinite;
+  transform-origin: left center; /* Crece desde la izquierda */
+}
+
+/* Marquee suave (Por si querés hacerlo por CSS y no tag <marquee>) */
+@keyframes marquee-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Requiere duplicar el contenido */
+}
+/* Tokens para el radial-gradient de la Aura Roja (Tailwind v4 no tiene theme() en CSS arbitrario siempre, usamos var) */
+:root { --aura-red: #ef4444; --console-cyan: #06b6d4; }
+
+/* Fix Marquee duplicado: el contenedor debe tener width 100% y el inner flex min-width max-content */
+.animate-marquee { animation: marquee-left 25s linear infinite; will-change: transform; }
+
+/* Espectro bounce visualizer */
+@keyframes bounceVisualizer {
+  0% { transform: scaleY(0.15); }
+  100% { transform: scaleY(1); }
+}
+.animate-bounce-visualizer {
+  animation-name: bounceVisualizer;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+
